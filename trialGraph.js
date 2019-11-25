@@ -11,17 +11,34 @@ var sampleData= [{name: "fred", rise: 12, run: 5, width: 6},
                 {name: "yellow", rise: 1, run: 3, width: 5},
                 {name: "purple", rise: 12, run: 7, width: 6},]
 
-var screen = {width: 800, height: 500}
+var sampleData2= [{name: "fred", rise: 13, run: 4, width: 3},
+                {name: "sam", rise: 12, run: 8, width: 4},
+                {name: "pebbles", rise: 17, run: 13, width: 7},
+                {name: "barney", rise: 5, run: 18, width: 8},
+                {name: "george", rise: 7, run: 15, width: 10},
+                {name: "green", rise: 15, run: 19, width: 4},
+                {name: "orange", rise: 9, run: 13, width: 6},
+                {name: "red", rise: 2, run: 11, width: 9},
+                {name: "yellow", rise: 1, run: 2, width: 3},
+                {name: "purple", rise: 16, run: 9, width: 6},]
+
 
 var setup = function(sampleData)
 {
+    var screen = {width: 800, height: 500}
+    
+    var margins = {top: 25, bottom: 25, left: 25, right: 25}
+    
+    var width = screen.width - margins.left - margins.right
+    var height = screen.height - margins.top - margins.bottom
+    
     var xScale = d3.scaleLinear()
                     .domain([0,20])
-                    .range([0,screen.width])
+                    .range([0, width])
     
     var yScale = d3.scaleLinear()
                     .domain([0,20])
-                    .range([screen.height,0])
+                    .range([height,0])
     
     var rScale = d3.scaleLinear()
                     .domain([0,10])
@@ -29,21 +46,51 @@ var setup = function(sampleData)
     
     var cScale = d3.scaleOrdinal(d3.schemeTableau10)
     
+    var xAxis = d3.axisBottom(xScale)
+    var yAxis = d3.axisLeft(yScale)
+    
+    d3.select("svg")
+    .append("g")
+    .attr("id","xAxis")
+    .attr("transform","translate("+margins.left+","+(margins.top+height)+")")
+    .call(xAxis)
+    
+    d3.select("svg")
+    .append("g")
+    .attr("id","yAxis")
+    .attr("transform","translate(10,"+margins.top+"),")
+    .call(yAxis);
+    
+    var svg = d3.select("body")
+    .append("svg")
+    .attr("width", screen.width)
+    .attr("height", screen.height);
+    
+    d3.select("svg")
+    .append("g")
+    .attr("id", "scatterplot")
+    .attr("transform", "translate("+margins.left+","+margins.top+")");
+    
+     d3.select("#scatterplot")
+    .selectAll("circle")
+    .data(sampleData)
+    .enter()
+    .append("circle")
+    
     drawCircles(sampleData, xScale, yScale, rScale, cScale)
+    
+    makeButton(sampleData, xScale, yScale, rScale, cScale)
 }
 
 
-var drawCircles = function(sampleData, xScale, yScale, rScale, cScale)
+var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
 {
-    var svg = d3.select("body")
-                .append("svg")
-                .attr("width", screen.width)
-                .attr("height", screen.height);
-    
-        svg.selectAll("circle")
-            .data(sampleData)
-            .enter()
-            .append("circle")
+            d3.select("#scatterplot")        
+            .selectAll("circle")
+            .data(dataArray)
+            //.enter()
+            //.append("circle")
+            .transition()
             .attr("cx", function(d)
                  {return xScale(d.run)})
             .attr("cy", function(d)
@@ -52,6 +99,20 @@ var drawCircles = function(sampleData, xScale, yScale, rScale, cScale)
                  {return rScale(d.width)})
             .attr("fill", function(d)
                  {return cScale(d.name)})
+}
+
+var makeButton= function(sampleData, xScale, yScale, rScale, cScale)
+{
+    d3.select("body")
+    .append("button")
+    .attr("id", "change")
+    .text("swithcheroo")
+    .on("click", function()
+    {
+        console.log("button works!")
+        drawCircles(sampleData2, xScale, yScale, rScale, cScale)
+    })
+    
 }
 
 setup(sampleData)
