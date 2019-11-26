@@ -101,6 +101,7 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
             //.enter()
             //.append("circle")
             .transition()
+            .duration(1000)
             .attr("cx", function(d)
                  {return xScale(d.run)})
             .attr("cy", function(d)
@@ -121,56 +122,76 @@ var makeButton= function(sampleData, xScale, yScale, rScale, cScale)
     {
         console.log("button works!")
         drawCircles(sampleData2, xScale, yScale, rScale, cScale)
+        
     })
     
 }
 
 setup(sampleData)
 
+
 var timelineSetup = function()
 {
     var screen = {width: 800, height: 100}
     
-    var margins = {top: 10, bottom: 30, left: 50, right: 25}
+    var tMargins = {top: 10, bottom: 30, left: 50, right: 25}
     
-    var width = screen.width - margins.left - margins.right
-    var height = screen.height - margins.top - margins.bottom
+    var width = screen.width - tMargins.left - tMargins.right
+    var tHeight = screen.height - tMargins.top - tMargins.bottom
     
-    var xScale = d3.scaleLinear()
+    var tScale = d3.scaleLinear()
                     .domain([2000,2020])
                     .range([0, width])
     
-    var xAxis = d3.axisBottom(xScale)
+    var xAxis = d3.axisBottom(tScale)
+                .tickFormat(d3.format("d"))
    
     var svg = d3.select("body")
     .append("svg")
+    .attr("class", "timeline")
     .attr("width", screen.width)
     .attr("height", screen.height);
     
     svg.append("g")
     .attr("id","xAxis")
-    .attr("transform","translate("+margins.left+","+(margins.top+height)+")")
+    .attr("transform","translate("+tMargins.left+","+(tMargins.top+tHeight)+")")
     .call(xAxis)
     
     svg.append("text")
-    .attr("transform", "translate("+ (width/2)+","+(height+margins.top+30)+")")
+    .attr("transform", "translate("+ (width/2)+","+(tHeight+tMargins.top+30)+")")
     .style("text-anchor", "middle")
     .text("Year")
     
-    svg.append("rect")
-    .attr("x", function(time)
-    {
-        //figure out how to change to slide along w/ the transition, I know I need it to slide to change in the same amount of time as the bubbles take to change, maybe use button to initiate the first swap and then a timing thingy to make the next slide start when the first one endes.
-        
-        return 55
-    })
-    .attr("width", 5)
-    .attr("height", 15)
-    .attr("fill", black)
-    .attr("y", function()
-          {return 50})
+    var timeLines = {one: tScale(2005), two: tScale(2010), three: tScale(2015)}
+
     
+    drawTick(timeLines.one, tScale, tHeight, tMargins)
     
 }
 
+var drawTick = function(data, tHeight, tMargins)
+{
+        console.log(data)    
+        console.log(tHeight)
+        console.log(tMargins)
+    
+        d3.select("svg.timeline")
+        .append("rect")
+        .attr("x", function(trash)
+              {return data +tMargins.left})
+       
+        //figure out how to change to slide along w/ the transition, I know I need it to slide to change in the same amount of time as the bubbles take to change, maybe use button to initiate the first swap and then a timing thingy to make the next slide start when the first one endes.
+            
+        .attr("y", function(time)
+        {
+            return tHeight+tMargins.top-7.5
+        })
+        .attr("width", 5)
+        .attr("height", 15)
+        .attr("fill", "black")  
+    
+        console.log("got here")
+}
+
 timelineSetup()
+
