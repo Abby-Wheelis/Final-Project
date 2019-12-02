@@ -49,7 +49,7 @@ var setup = function(realData)
     var height = screen.height - margins.top - margins.bottom
     
     var xScale = d3.scaleLinear()
-                    .domain([(d3.min(realData[0].2010x)), (d3.max(realData[0].2010x))])
+                    .domain([d3.min(realData[0].2010x), (d3.max(realData[0].2010x))])
                     .range([0, width])
     
     var yScale = d3.scaleLinear()
