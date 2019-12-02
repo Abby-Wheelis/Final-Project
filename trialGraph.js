@@ -29,7 +29,9 @@ var CirclePromise = d3.csv("CSV-DATA-YAY.csv")
 Promise.all([CirclePromise]).then(
 function(data)
 {
-    console.log("data",data)
+    console.log("data",data);
+  
+    setup(data);
 },
 function(err)
 {
@@ -117,6 +119,8 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
             //.enter()
             //.append("circle")
             
+            console.log(dataArray)
+            
             spots.transition()
             .duration(1000)
             .attr("cx", function(d)
@@ -162,7 +166,7 @@ var makeButton= function(sampleData, xScale, yScale, rScale, cScale)
     
 }
 
-setup(sampleData)// I'll need to actually put this in a promise, duh
+//setup(sampleData)// I'll need to actually put this in a promise, duh
 
 /// begin extra SVG for the time slider dude down there
 var timelineSetup = function()
