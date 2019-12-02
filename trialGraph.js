@@ -49,15 +49,15 @@ var setup = function(realData)
     var height = screen.height - margins.top - margins.bottom
     
     var xScale = d3.scaleLinear()
-                    .domain([d3.min(realData.2010x), d3.max(realData.2010x)])
+                    .domain([d3.min(realData[0].2010x), d3.max(realData[0].2010x)])
                     .range([0, width])
     
     var yScale = d3.scaleLinear()
-                    .domain([d3.min(realData.2010y),d3.max(realData.2010y)])
+                    .domain([d3.min(realData[0].2010y),d3.max(realData[0].2010y)])
                     .range([height-5,0])
     
     var rScale = d3.scaleLinear()
-                    .domain([0,10])
+                    .domain([d3.min(realData[0].2010r),d3.max(realData[0].2010r)])
                     .range([0,50])
     
     var cScale = d3.scaleOrdinal(d3.schemeTableau10)
