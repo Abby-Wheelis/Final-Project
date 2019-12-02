@@ -114,11 +114,11 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
                  {return cScale(d.name)})
             //mouseover works, positioning of the div needs help
             spots.on("mouseover", function(d)
-            {
-                console.log(parseFloat(d3.select(this).attr("x")))
+            {   
+                console.log(d3.select(this).attr("r"))
                 
-                var xPosition = d3.select(this).attr("x") //+ xScale.bandwidth() /// 2;
-                var yPosition = d3.select(this).attr("y") /// 2 + h/2;
+                var xPosition = d3.event.pageX; //add later to tweak
+                var yPosition = d3.event.pageY;
                 
                 d3.select("#tooltip")
                 .style("left", xPosition + "px")
