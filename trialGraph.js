@@ -22,6 +22,21 @@ var sampleData2= [{name: "fred", rise: 13, run: 4, width: 3},
                 {name: "yellow", rise: 1, run: 2, width: 3},
                 {name: "purple", rise: 16, run: 9, width: 6},]
 
+
+  
+var CirclePromise = d3.csv("CircleData.csv")
+
+Promise.all([CirclePromise]).then(
+function(data)
+{
+    console.log("data",data)
+},
+function(err)
+{
+    console.log("broken",err)
+});
+
+
 // sets the stage for the circle dudes
 var setup = function(sampleData)
 {
