@@ -24,7 +24,7 @@ var sampleData2= [{name: "fred", rise: 13, run: 4, width: 3},
 
 
   
-var CirclePromise = d3.csv("CircleData.csv")
+var CirclePromise = d3.csv("CSV-DATA-YAY.csv")
 
 Promise.all([CirclePromise]).then(
 function(data)
