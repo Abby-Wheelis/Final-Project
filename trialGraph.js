@@ -22,9 +22,10 @@ var sampleData2= [{name: "fred", rise: 13, run: 4, width: 3},
                 {name: "yellow", rise: 1, run: 2, width: 3},
                 {name: "purple", rise: 16, run: 9, width: 6},]
 
-
+// sets the stage for the circle dudes
 var setup = function(sampleData)
 {
+    
     var screen = {width: 800, height: 500}
     
     var margins = {top: 25, bottom: 35, left: 50, right: 25}
@@ -92,24 +93,43 @@ var setup = function(sampleData)
     makeButton(sampleData, xScale, yScale, rScale, cScale)
 }
 
-
+//draws the dudes and handles the mouseover
 var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
 {
-            d3.select("#scatterplot")        
+            var spots = d3.select("#scatterplot")        
             .selectAll("circle")
             .data(dataArray)
             //.enter()
             //.append("circle")
-            .transition()
+            
+            spots.transition()
             .duration(1000)
             .attr("cx", function(d)
-                 {return xScale(d.run)})
+                 {return xScale(d.run)}) 
             .attr("cy", function(d)
                  {return yScale(d.rise)})
             .attr("r", function(d)
                  {return rScale(d.width)})
             .attr("fill", function(d)
                  {return cScale(d.name)})
+            //mouseover works, positioning of the div needs help
+            spots.on("mouseover", function(d)
+            {
+                console.log(parseFloat(d3.select(this).attr("x")))
+                
+                var xPosition = d3.select(this).attr("x") //+ xScale.bandwidth() /// 2;
+                var yPosition = d3.select(this).attr("y") /// 2 + h/2;
+                
+                d3.select("#tooltip")
+                .style("left", xPosition + "px")
+                .style("top", yPosition + "px")
+                .select("#value")
+                .text(d.name);
+                
+                d3.select("#tooltip").classed("hidden", false);
+            })
+            .on("mouseout", function()
+                {d3.select("#tooltip").classed("hidden", true);})
 }
 
 var makeButton= function(sampleData, xScale, yScale, rScale, cScale)
@@ -127,17 +147,17 @@ var makeButton= function(sampleData, xScale, yScale, rScale, cScale)
     
 }
 
-setup(sampleData)
+setup(sampleData)// I'll need to actually put this in a promise, duh
 
-
+/// begin extra SVG for the time slider dude down there
 var timelineSetup = function()
 {
-    var screen = {width: 800, height: 100}
+    var tScreen = {width: 800, height: 100}
     
     var tMargins = {top: 10, bottom: 30, left: 50, right: 25}
     
-    var width = screen.width - tMargins.left - tMargins.right
-    var tHeight = screen.height - tMargins.top - tMargins.bottom
+    var width = tScreen.width - tMargins.left - tMargins.right
+    var tHeight = tScreen.height - tMargins.top - tMargins.bottom
     
     var tScale = d3.scaleLinear()
                     .domain([2000,2020])
@@ -162,29 +182,31 @@ var timelineSetup = function()
     .style("text-anchor", "middle")
     .text("Year")
     
-    var timeLines = {one: tScale(2005), two: tScale(2010), three: tScale(2015)}
+    var timeLines = {one: tScale(2005), two: tScale(2010), three: tScale(2015)} // array of the pixel destinations
 
-    
     drawTick(timeLines.one, tScale, tHeight, tMargins)
     
 }
 
-var drawTick = function(data, tHeight, tMargins)
+var drawTick = function(data, tHeight, tMargins) // ok so this works, but doesn't call to slide, if I do it in the other on it doesn't know everything, if I do it seperately it just ignores that other .on and doesn't move
 {
         console.log(data)    
         console.log(tHeight)
         console.log(tMargins)
     
-        d3.select("svg.timeline")
+        var tick = d3.select("svg.timeline")
         .append("rect")
-        .attr("x", function(trash)
-              {return data +tMargins.left})
+        
+        tick.transition()
+    
+        tick.attr("x", function(trash)
+              {return data + 50}) //that 50 is tMargins.left, I caved and did it the bad way
        
-        //figure out how to change to slide along w/ the transition, I know I need it to slide to change in the same amount of time as the bubbles take to change, maybe use button to initiate the first swap and then a timing thingy to make the next slide start when the first one endes.
+        //figure out how to change to slide along w/ the transition, I know I need it to slide to change in the same amount of time as the bubbles take to change, maybe use button to initiate the first swap and then a timing thingy to make the next slide start when the first one ends.
             
         .attr("y", function(time)
         {
-            return tHeight+tMargins.top-7.5
+            return 62.5  //this number should be, tHeight+tMargins.top-7.5, I cheated
         })
         .attr("width", 5)
         .attr("height", 15)
@@ -193,5 +215,4 @@ var drawTick = function(data, tHeight, tMargins)
         console.log("got here")
 }
 
-timelineSetup()
-
+timelineSetup() // should not be a loose call down here eventually
