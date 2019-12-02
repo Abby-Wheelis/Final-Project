@@ -53,11 +53,11 @@ var setup = function(realData)
                     .range([0, width])
     
     var yScale = d3.scaleLinear()
-                    .domain([d3.min(realData[0].2010y),d3.max(realData[0].2010y)])
+                    .domain(0,100])
                     .range([height-5,0])
     
     var rScale = d3.scaleLinear()
-                    .domain([d3.min(realData[0].2010r),d3.max(realData[0].2010r)])
+                    .domain([0,100])
                     .range([0,50])
     
     var cScale = d3.scaleOrdinal(d3.schemeTableau10)
