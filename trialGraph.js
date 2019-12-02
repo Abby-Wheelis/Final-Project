@@ -38,7 +38,7 @@ function(err)
 
 
 // sets the stage for the circle dudes
-var setup = function(sampleData)
+var setup = function(realData)
 {
     
     var screen = {width: 800, height: 500}
@@ -49,11 +49,11 @@ var setup = function(sampleData)
     var height = screen.height - margins.top - margins.bottom
     
     var xScale = d3.scaleLinear()
-                    .domain([0,20])
+                    .domain([d3.min(realData.2010x), d3.max(realData.2010x)])
                     .range([0, width])
     
     var yScale = d3.scaleLinear()
-                    .domain([0,20])
+                    .domain([d3.min(realData.2010y),d3.max(realData.2010y)])
                     .range([height-5,0])
     
     var rScale = d3.scaleLinear()
