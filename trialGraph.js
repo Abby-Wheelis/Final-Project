@@ -99,13 +99,13 @@ var setup = function(realData)
     
     d3.select("#scatterplot")
     .selectAll("circle")
-    .data(sampleData)
+    .data(realData)
     .enter()
     .append("circle")
     
-    drawCircles(sampleData, xScale, yScale, rScale, cScale)
+    drawCircles(realData, xScale, yScale, rScale, cScale)
     
-    makeButton(sampleData, xScale, yScale, rScale, cScale)
+    makeButton(realData, xScale, yScale, rScale, cScale)
 }
 
 //draws the dudes and handles the mouseover
