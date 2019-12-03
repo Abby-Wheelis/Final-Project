@@ -11,8 +11,6 @@ function(data)
     
     var dataArray= data[0];
     
-    var fifteenArray = dataArray.map(makeFifteen);
-    
     //console.log(tenArray);
     
     setup(dataArray);
@@ -166,8 +164,10 @@ var makeButton= function(realData, xScale, yScale, rScale, cScale)
     .text("swithcheroo")
     .on("click", function()
     {
+        var fifteenArray = dataArray.map(makeFifteen);
+        
         console.log("button works!")
-        drawCircles(realData, xScale, yScale, rScale, cScale)
+        drawCircles(fifteenArray, xScale, yScale, rScale, cScale)
         
     })
     
