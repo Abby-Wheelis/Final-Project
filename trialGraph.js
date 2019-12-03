@@ -6,6 +6,8 @@ Promise.all([CirclePromise]).then(
 function(data)
 {
     console.log("data",data);
+    
+    console.log(data[0]);
   
     setup(tenArray);
     
