@@ -45,7 +45,7 @@ var setup = function(realData)
     
     var screen = {width: 800, height: 500}
     
-    var margins = {top: 25, bottom: 35, left: 50, right: 25}
+    var margins = {top: 25, bottom: 50, left: 50, right: 50}
     
     var width = screen.width - margins.left - margins.right
     var height = screen.height - margins.top - margins.bottom
@@ -60,7 +60,7 @@ var setup = function(realData)
     
     var rScale = d3.scaleLinear()
                     .domain([-20,800])
-                    .range([0,50])
+                    .range([5,50])
     
     var cScale = d3.scaleOrdinal(d3.schemeTableau10)
     
