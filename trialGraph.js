@@ -140,7 +140,7 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
             .attr("r", function(d)
                  {return rScale(d.tenR)})
             .attr("fill", function(d)
-                 {return cScale(d.Name )})
+                 {return cScale(d.Name)})
             //mouseover works, positioning of the div needs help
             spots.on("mouseover", function(d)
             {   
@@ -153,7 +153,7 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
                 .style("left", xPosition + "px")
                 .style("top", yPosition + "px")
                 .select("#value")
-                .text(d.Name );
+                .text(d.Name);
                 
                 d3.select("#tooltip").classed("hidden", false);
             })
