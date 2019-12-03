@@ -87,7 +87,7 @@ var setup = function(realData)
     
     d3.select("#scatterplot")
     .selectAll("circle")
-    .data(realData[0])
+    .data(realData)
     .enter()
     .append("circle")
     
@@ -112,7 +112,7 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
   
             var spots = d3.select("#scatterplot")        
             .selectAll("circle")
-            .data(dataArray[0])
+            .data(dataArray)
             //.enter()
             //.append("circle")
                         
