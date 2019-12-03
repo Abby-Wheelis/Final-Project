@@ -113,7 +113,7 @@ var setup = function(realData)
 //draws the dudes and handles the mouseover
 var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
 {
-            var get10X = function(d)
+            /*var get10X = function(d)
               {return d.tenX}
             
             var get10Y = function(d)
@@ -122,7 +122,7 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
             var get10R = function(d)
               {return d.tenR}
   
-            console.log(dataArray[0].map(get10X))
+            console.log(dataArray[0].map(get10X))*/
   
             var spots = d3.select("#scatterplot")        
             .selectAll("circle")
@@ -138,7 +138,7 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
             .attr("cy", function(d)
                  {return yScale(d.tenY)})
             .attr("r", function(d)
-                 {return rScale(d.tenR)})
+                 {return d.tenR})
             .attr("fill", function(d)
                  {return cScale(d.Name)})
             //mouseover works, positioning of the div needs help
