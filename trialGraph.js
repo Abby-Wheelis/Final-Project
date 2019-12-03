@@ -113,8 +113,14 @@ var setup = function(realData)
 //draws the dudes and handles the mouseover
 var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
 {
-            var getStats = function(d)
+            var get10X = function(d)
               {return d.tenX}
+            
+            var get10Y = function(d)
+              {return d.tenY}
+            
+            var get10R = function(d)
+              {return d.tenR}
   
             console.log(dataArray[0].map(getStats))
   
@@ -127,7 +133,8 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
             spots.transition()
             .duration(1000)
             .attr("cx", function(d)
-                 {return xScale(d.tenX)}) 
+                 { console.log(d)
+              return xScale(d.tenX)}) 
             .attr("cy", function(d)
                  {return yScale(d.tenY)})
             .attr("r", function(d)
