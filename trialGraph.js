@@ -116,7 +116,7 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
             var getStats = function(d)
               {return d.tenX}
   
-            console.log(dataArray.map(getStats))
+            console.log(dataArray[0].map(getStats))
   
             var spots = d3.select("#scatterplot")        
             .selectAll("circle")
