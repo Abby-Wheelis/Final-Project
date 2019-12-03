@@ -6,12 +6,12 @@ Promise.all([CirclePromise]).then(
 function(data)
 {
     console.log("data",data);
-    
-    console.log(data[0]);
   
     setup(tenArray);
     
-    var tenArray= data[0].map(makeTen);
+    var dataArray= data[0];
+    
+    var tenArray= dataArray.map(makeTen);
 },
 function(err)
 {
