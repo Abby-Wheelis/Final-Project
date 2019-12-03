@@ -101,7 +101,7 @@ var setup = function(realData)
     
     d3.select("#scatterplot")
     .selectAll("circle")
-    .data(realData)
+    .data(realData[0])
     .enter()
     .append("circle")
     
