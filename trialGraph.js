@@ -134,7 +134,7 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
             //mouseover works, positioning of the div needs help
             spots.on("mouseover", function(d)
             {   
-                console.log(d3.select(this).attr("r"))
+                //console.log(d3.select(this).attr("r"))
                 
                 var xPosition = d3.event.pageX; //add later to tweak
                 var yPosition = d3.event.pageY;
@@ -151,7 +151,7 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
                 {d3.select("#tooltip").classed("hidden", true);})
 }
 
-var makeButton= function(sampleData, xScale, yScale, rScale, cScale)
+var makeButton= function(realData, xScale, yScale, rScale, cScale)
 {
     d3.select("body")
     .append("button")
@@ -160,7 +160,7 @@ var makeButton= function(sampleData, xScale, yScale, rScale, cScale)
     .on("click", function()
     {
         console.log("button works!")
-        drawCircles(sampleData2, xScale, yScale, rScale, cScale)
+        drawCircles(realData, xScale, yScale, rScale, cScale)
         
     })
     
