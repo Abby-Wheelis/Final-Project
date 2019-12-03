@@ -1,6 +1,6 @@
 //works to create a scatterplot with different size circles and colors
 
-var sampleData= [{name: "fred", rise: 12, run: 5, width: 6},
+/*var sampleData= [{name: "fred", rise: 12, run: 5, width: 6},
                 {name: "sam", rise: 15, run: 7, width: 7},
                 {name: "pebbles", rise: 18, run: 11, width: 9},
                 {name: "barney", rise: 8, run: 15, width: 6},
@@ -20,7 +20,7 @@ var sampleData2= [{name: "fred", rise: 13, run: 4, width: 3},
                 {name: "orange", rise: 9, run: 13, width: 6},
                 {name: "red", rise: 2, run: 11, width: 9},
                 {name: "yellow", rise: 1, run: 2, width: 3},
-                {name: "purple", rise: 16, run: 9, width: 6},]
+                {name: "purple", rise: 16, run: 9, width: 6},]*/
 
 
   
