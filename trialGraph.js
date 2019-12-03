@@ -1,29 +1,5 @@
 //works to create a scatterplot with different size circles and colors
 
-/*var sampleData= [{name: "fred", rise: 12, run: 5, width: 6},
-                {name: "sam", rise: 15, run: 7, width: 7},
-                {name: "pebbles", rise: 18, run: 11, width: 9},
-                {name: "barney", rise: 8, run: 15, width: 6},
-                {name: "george", rise: 9, run: 17, width: 10},
-                {name: "green", rise: 13, run: 19, width: 3},
-                {name: "orange", rise: 5, run: 15, width: 2},
-                {name: "red", rise: 3, run: 12, width: 1},
-                {name: "yellow", rise: 1, run: 3, width: 5},
-                {name: "purple", rise: 12, run: 7, width: 6},]
-
-var sampleData2= [{name: "fred", rise: 13, run: 4, width: 3},
-                {name: "sam", rise: 12, run: 8, width: 4},
-                {name: "pebbles", rise: 17, run: 13, width: 7},
-                {name: "barney", rise: 5, run: 18, width: 8},
-                {name: "george", rise: 7, run: 15, width: 10},
-                {name: "green", rise: 15, run: 19, width: 4},
-                {name: "orange", rise: 9, run: 13, width: 6},
-                {name: "red", rise: 2, run: 11, width: 9},
-                {name: "yellow", rise: 1, run: 2, width: 3},
-                {name: "purple", rise: 16, run: 9, width: 6},]*/
-
-
-  
 var CirclePromise = d3.csv("CSV-DATA-YAY.csv")
 
 Promise.all([CirclePromise]).then(
@@ -45,7 +21,7 @@ var setup = function(realData)
     
     var screen = {width: 800, height: 500}
     
-    var margins = {top: 25, bottom: 50, left: 50, right: 50}
+    var margins = {top: 25, bottom: 75, left: 50, right: 50}
     
     var width = screen.width - margins.left - margins.right
     var height = screen.height - margins.top - margins.bottom
