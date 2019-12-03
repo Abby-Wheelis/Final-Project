@@ -11,8 +11,6 @@ function(data)
     
     var dataArray= data[0];
     
-    
-    
     var fifteenArray = dataArray.map(makeFifteen);
     
     //console.log(tenArray);
@@ -96,7 +94,7 @@ var setup = function(realData)
     
     console.log(realData)
     
-    var tenArray= dataArray.map(makeTen);
+    var tenArray= realData.map(makeTen);
     
     d3.select("#scatterplot")
     .selectAll("circle")
