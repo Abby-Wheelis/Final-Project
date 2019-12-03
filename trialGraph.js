@@ -117,20 +117,20 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
   
             var spots = d3.select("#scatterplot")        
             .selectAll("circle")
-            .data(dataArray)
+            .data(dataArray[0])
             //.enter()
             //.append("circle")
                         
             spots.transition()
             .duration(1000)
             .attr("cx", function(d)
-                 {return xScale(d.run)}) 
+                 {return xScale(d.2005x)}) 
             .attr("cy", function(d)
-                 {return yScale(d.rise)})
+                 {return yScale(d.2005y)})
             .attr("r", function(d)
-                 {return rScale(d.width)})
+                 {return rScale(d.2005r)})
             .attr("fill", function(d)
-                 {return cScale(d.name)})
+                 {return cScale(d.Name)})
             //mouseover works, positioning of the div needs help
             spots.on("mouseover", function(d)
             {   
@@ -143,7 +143,7 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
                 .style("left", xPosition + "px")
                 .style("top", yPosition + "px")
                 .select("#value")
-                .text(d.name);
+                .text(d.Name);
                 
                 d3.select("#tooltip").classed("hidden", false);
             })
