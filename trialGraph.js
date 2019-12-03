@@ -67,7 +67,7 @@ var setup = function(realData)
     var xAxis = d3.axisBottom(xScale)
     var yAxis = d3.axisLeft(yScale)
     
-    var svg = d3.select("body")
+    var svg = d3.select("#Scatterplot")
     .append("svg")
     .attr("width", screen.width)
     .attr("height", screen.height);
