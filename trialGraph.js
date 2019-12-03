@@ -198,8 +198,8 @@ var timelineSetup = function()
     var svg = d3.select("body")
     .append("svg")
     .attr("class", "timeline")
-    .attr("width", screen.width)
-    .attr("height", screen.height);
+    .attr("width", tScreen.width)
+    .attr("height", tScreen.height);
     
     svg.append("g")
     .attr("id","xAxis")
