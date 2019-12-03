@@ -8,14 +8,14 @@ function(data)
     console.log("data",data);
     
     console.log(data[0]);
-  
-    setup(tenArray);
     
     var dataArray= data[0];
     
     var tenArray= dataArray.map(makeTen);
     
     console.log(tenArray);
+    
+    setup(tenArray);
 },
 function(err)
 {
