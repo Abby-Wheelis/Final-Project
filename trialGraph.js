@@ -148,9 +148,7 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
                 .style("left", xPosition + "px")
                 .style("top", yPosition + "px")
                 .select("#name")
-                .text(d.Name)
-                .select("#radius")
-                .text(d.R);
+                .text(d.Name + ": " + d.R)
                 
                 d3.select("#tooltip").classed("hidden", false);
             })
