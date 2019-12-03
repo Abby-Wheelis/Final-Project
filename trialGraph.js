@@ -80,7 +80,7 @@ var setup = function(realData)
     svg.append("text")
     .attr("transform", "translate("+ (width/2)+","+(height+margins.top+30)+")")
     .style("text-anchor", "middle")
-    .text("Horizontal Axis")
+    .text("Co2 Emissins per Capita")
     
     svg.append("g")
     .attr("id","yAxis")
@@ -93,7 +93,7 @@ var setup = function(realData)
       .attr("x", 0-(height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
-      .text("Vertical Axis");     
+      .text("Total Domestic material consumption per capita in tonnes");     
     
     svg.append("g")
     .attr("id", "scatterplot")
@@ -113,7 +113,7 @@ var setup = function(realData)
 //draws the dudes and handles the mouseover
 var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
 {
-            console.log(dataArray[0])
+            console.log(dataArray[0].tenX)
   
             var spots = d3.select("#scatterplot")        
             .selectAll("circle")
