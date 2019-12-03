@@ -60,7 +60,7 @@ var setup = function(realData)
     
     svg.append("g")
     .attr("id","yAxis")
-    .attr("transform","translate(35,"+margins.top+")")
+    .attr("transform","translate(55,"+margins.top+")")
     .call(yAxis);
     
     svg.append("text")
