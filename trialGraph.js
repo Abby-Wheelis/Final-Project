@@ -7,12 +7,20 @@ function(data)
 {
     console.log("data",data);
   
-    setup(data);
+    setup(tenArray);
+    
+    var tenArray= data[0].map(makeTen);
 },
 function(err)
 {
     console.log("broken",err)
 });
+
+var makeTen = function(dataPoint)
+{
+    return {Name: dataPoint.Name, X: dataPoint.tenX, Y: dataPoint.tenY, R: dataPoint.tenR}
+}
+
 
 
 // sets the stage for the circle dudes
@@ -110,11 +118,11 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
             .duration(1000)
             .attr("cx", function(d)
                  { console.log(d)
-                  return xScale(d.tenX)}) 
+                  return xScale(d.X)}) 
             .attr("cy", function(d)
-                 {return yScale(d.tenY)})
+                 {return yScale(d.Y)})
             .attr("r", function(d)
-                 {return rScale(d.tenR)})
+                 {return rScale(d.R)})
             .attr("fill", function(d)
                  {return cScale(d.Name)})
             //mouseover works, positioning of the div needs help
