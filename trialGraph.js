@@ -15,7 +15,7 @@ function(data)
     
     var fifteenArray = dataArray.map(makeFifteen);
     
-    console.log(tenArray);
+    //console.log(tenArray);
     
     setup(dataArray);
 },
