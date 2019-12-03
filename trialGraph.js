@@ -21,7 +21,7 @@ var setup = function(realData)
     
     var screen = {width: 800, height: 500}
     
-    var margins = {top: 25, bottom: 75, left: 50, right: 50}
+    var margins = {top: 25, bottom: 75, left: 50, right: 55}
     
     var width = screen.width - margins.left - margins.right
     var height = screen.height - margins.top - margins.bottom
