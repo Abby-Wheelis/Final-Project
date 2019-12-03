@@ -55,7 +55,7 @@ var setup = function(realData)
                     .range([0, width])
     
     var yScale = d3.scaleLinear()
-                    .domain([0,110])
+                    .domain([0,200])
                     .range([height-5,0])
     
     var rScale = d3.scaleLinear()
