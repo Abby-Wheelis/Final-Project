@@ -11,11 +11,13 @@ function(data)
     
     var dataArray= data[0];
     
-    var tenArray= dataArray.map(makeTen);
+    
+    
+    var fifteenArray = dataArray.map(makeFifteen);
     
     console.log(tenArray);
     
-    setup(tenArray);
+    setup(dataArray);
 },
 function(err)
 {
@@ -27,7 +29,10 @@ var makeTen = function(dataPoint)
     return {Name: dataPoint.Name, X: dataPoint.tenX, Y: dataPoint.tenY, R: dataPoint.tenR}
 }
 
-
+var makeFifteen = function(dataPoint)
+{
+    return {Name: dataPoint.Name, X: dataPoint.fifteenX, Y: dataPoint.fifteenY, R: dataPoint.fifteenR}
+}
 
 // sets the stage for the circle dudes
 var setup = function(realData)
@@ -91,13 +96,15 @@ var setup = function(realData)
     
     console.log(realData)
     
+    var tenArray= dataArray.map(makeTen);
+    
     d3.select("#scatterplot")
     .selectAll("circle")
     .data(realData)
     .enter()
     .append("circle")
     
-    drawCircles(realData, xScale, yScale, rScale, cScale)
+    drawCircles(tenArray, xScale, yScale, rScale, cScale)
     
     makeButton(realData, xScale, yScale, rScale, cScale)
 }
