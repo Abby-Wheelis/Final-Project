@@ -54,7 +54,7 @@ var setup = function(realData)
     .call(xAxis)
     
     svg.append("text")
-    .attr("transform", "translate("+ (width/2)+","+(height+margins.top+30)+")")
+    .attr("transform", "translate("+ (width/2)+","+(height+margins.top+55)+")")
     .style("text-anchor", "middle")
     .text("Co2 Emissins per Capita")
     
@@ -65,7 +65,7 @@ var setup = function(realData)
     
     svg.append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", (margins.left-80))
+      .attr("y", (margins.left-55))
       .attr("x", 0-(height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
