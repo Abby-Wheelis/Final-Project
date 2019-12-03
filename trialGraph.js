@@ -138,7 +138,7 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
             .attr("cy", function(d)
                  {return yScale(d.tenY)})
             .attr("r", function(d)
-                 {return d.tenR})
+                 {return rScale(d.tenR)})
             .attr("fill", function(d)
                  {return cScale(d.Name)})
             //mouseover works, positioning of the div needs help
