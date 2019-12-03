@@ -65,7 +65,7 @@ var setup = function(realData)
     
     svg.append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", (margins.left-55))
+      .attr("y", (margins.left-80))
       .attr("x", 0-(height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
