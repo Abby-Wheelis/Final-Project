@@ -144,11 +144,14 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
                 var xPosition = d3.event.pageX; //add later to tweak
                 var yPosition = d3.event.pageY;
                 
-                d3.select("#tooltip")
+                var tooltip = d3.select("#tooltip")
                 .style("left", xPosition + "px")
                 .style("top", yPosition + "px")
-                .select("#value")
+                .select("#name")
                 .text(d.Name);
+                
+                tooltip.select("#radius")
+                .text(d.R);
                 
                 d3.select("#tooltip").classed("hidden", false);
             })
