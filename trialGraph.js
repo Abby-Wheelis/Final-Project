@@ -87,6 +87,8 @@ var setup = function(realData)
     .attr("id", "scatterplot")
     .attr("transform", "translate("+margins.left+","+margins.top+")");
     
+    console.log(realData)
+    
     d3.select("#scatterplot")
     .selectAll("circle")
     .data(realData)
