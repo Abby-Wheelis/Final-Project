@@ -14,6 +14,8 @@ function(data)
     var dataArray= data[0];
     
     var tenArray= dataArray.map(makeTen);
+    
+    console.log(tenArray);
 },
 function(err)
 {
