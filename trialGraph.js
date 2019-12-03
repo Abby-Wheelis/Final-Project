@@ -164,7 +164,7 @@ var makeButton= function(realData, xScale, yScale, rScale, cScale)
     .text("swithcheroo")
     .on("click", function()
     {
-        var fifteenArray = dataArray.map(makeFifteen);
+        var fifteenArray = realData.map(makeFifteen);
         
         console.log("button works!")
         drawCircles(fifteenArray, xScale, yScale, rScale, cScale)
