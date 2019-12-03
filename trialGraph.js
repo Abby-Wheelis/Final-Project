@@ -113,7 +113,10 @@ var setup = function(realData)
 //draws the dudes and handles the mouseover
 var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
 {
-            console.log(dataArray[0].[0].tenX)
+            var getStats = function(d)
+              {return d.tenX}
+  
+            console.log(dataArray.map(getStats))
   
             var spots = d3.select("#scatterplot")        
             .selectAll("circle")
