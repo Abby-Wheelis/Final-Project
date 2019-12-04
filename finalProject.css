@@ -55,6 +55,11 @@ body
     font-family: 'Lato', sans-serif;
 }
 
+button
+{
+    font-size: 16px;   
+}
+
 /*
 generated scheme: 
 
